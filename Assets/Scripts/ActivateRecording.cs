@@ -19,6 +19,7 @@ public class ActivateRecording : MonoBehaviour
     private InputAction m_inputActionSecondaryButton;
     public InputAction m_inputActionTrigger;
 
+    private Animator _handAnimator;
 
     public bool activated;
     void Awake()
@@ -28,6 +29,8 @@ public class ActivateRecording : MonoBehaviour
         m_inputActionPrimaryButton = m_actionMap.FindAction(PrimaryButton);
         m_inputActionSecondaryButton = m_actionMap.FindAction(SecondaryButton);
         m_inputActionTrigger = m_actionMap.FindAction(TriggerButton);
+
+        _handAnimator = GameObject.Find("erika_archer@T-Pose").GetComponent<Animator>();
 
 
     }
@@ -57,7 +60,7 @@ public class ActivateRecording : MonoBehaviour
 
         if (PrimaryButtonPress == 1)
         {
-            GameObject.Find("Recorder").GetComponent<Recorder_Controller>().Record();
+            //GameObject.Find("Recorder").GetComponent<Recorder_Controller>().Record();
             PrimaryButtonPress = 0;
             activated = true;
         }
@@ -66,7 +69,7 @@ public class ActivateRecording : MonoBehaviour
             GameObject.Find("Recorder").GetComponent<Recorder_Controller>().stopRecord();
 
             SecondaryButtonPress = 0;
-            
+
             //GameObject.Find("Recorder").GetComponent<Recorder_Controller>().Prepare();
             //activated = false;
         }
